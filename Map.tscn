@@ -1,0 +1,58 @@
+[gd_scene load_steps=6 format=3 uid="uid://ckxjviho7cmib"]
+
+[ext_resource type="PackedScene" uid="uid://dtyrfiw6k130p" path="res://Character.tscn" id="1_13q04"]
+[ext_resource type="PackedScene" uid="uid://bs66l8nwgli7i" path="res://Ball.tscn" id="2_mklvh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c1pdq"]
+size = Vector2(1920, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j4c7b"]
+size = Vector2(1080, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_okghs"]
+size = Vector2(1920, 40)
+
+[node name="Map" type="Node2D"]
+
+[node name="Arena" type="Node2D" parent="."]
+
+[node name="Floor" type="StaticBody2D" parent="Arena"]
+collision_layer = 7
+collision_mask = 7
+
+[node name="Floor" type="CollisionShape2D" parent="Arena/Floor"]
+position = Vector2(960, 1080)
+shape = SubResource("RectangleShape2D_c1pdq")
+
+[node name="WallLeft" type="StaticBody2D" parent="Arena"]
+collision_layer = 7
+collision_mask = 7
+
+[node name="WallLeft" type="CollisionShape2D" parent="Arena/WallLeft"]
+position = Vector2(0, 540)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_j4c7b")
+
+[node name="WallRight" type="StaticBody2D" parent="Arena"]
+collision_layer = 7
+collision_mask = 7
+
+[node name="WallRight" type="CollisionShape2D" parent="Arena/WallRight"]
+position = Vector2(1920, 540)
+rotation = 4.71239
+shape = SubResource("RectangleShape2D_j4c7b")
+
+[node name="Ceiling" type="StaticBody2D" parent="Arena"]
+collision_layer = 7
+collision_mask = 7
+
+[node name="Ceiling" type="CollisionShape2D" parent="Arena/Ceiling"]
+position = Vector2(960, 0)
+rotation = 3.14159
+shape = SubResource("RectangleShape2D_okghs")
+
+[node name="Character" parent="." instance=ExtResource("1_13q04")]
+position = Vector2(519, 920)
+
+[node name="Ball" parent="." instance=ExtResource("2_mklvh")]
+position = Vector2(401, 408)
