@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://ckxjviho7cmib"]
+[gd_scene load_steps=7 format=3 uid="uid://ckxjviho7cmib"]
 
+[ext_resource type="Script" path="res://Map.gd" id="1_2edqj"]
 [ext_resource type="PackedScene" uid="uid://dtyrfiw6k130p" path="res://Character.tscn" id="1_13q04"]
 [ext_resource type="PackedScene" uid="uid://bs66l8nwgli7i" path="res://Ball.tscn" id="2_mklvh"]
 
@@ -13,6 +14,7 @@ size = Vector2(1080, 40)
 size = Vector2(1920, 40)
 
 [node name="Map" type="Node2D"]
+script = ExtResource("1_2edqj")
 
 [node name="Arena" type="Node2D" parent="."]
 
@@ -55,4 +57,5 @@ shape = SubResource("RectangleShape2D_okghs")
 position = Vector2(519, 920)
 
 [node name="Ball" parent="." instance=ExtResource("2_mklvh")]
+unique_name_in_owner = true
 position = Vector2(953, 335)

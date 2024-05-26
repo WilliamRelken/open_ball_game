@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+signal change_direction
+
 var direction: Vector2
 var SPEED = 1000
 
@@ -12,14 +14,14 @@ func _process(delta):
 	velocity = direction
 	move_and_slide()
 
-func moving_right(dir: Vector2):
-	return dir.x > 0
-func moving_down(dir: Vector2):
-	return dir.y > 0
-
 func _on_area_2d_body_entered(body: Node2D):
 	var path = str(body.get_path())
 	if (path == "/root/Map/Arena/WallLeft" or path == "/root/Map/Arena/WallRight"):
 		direction.x *= -1
 	elif (path == "/root/Map/Arena/Floor" or path == "/root/Map/Arena/Ceiling"):
 		direction.y *= -1
+
+
+func _on_change_direction():
+	direction.x *= -1
+	direction.y *= -1
