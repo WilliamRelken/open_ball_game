@@ -20,6 +20,6 @@ func moving_down(dir: Vector2):
 func _on_area_2d_body_entered(body: Node2D):
 	var path = str(body.get_path())
 	if (path == "/root/Map/Arena/WallLeft" or path == "/root/Map/Arena/WallRight"):
-		direction.x = direction.x * -1
+		direction.x *= -1
 	elif (path == "/root/Map/Arena/Floor" or path == "/root/Map/Arena/Ceiling"):
-		direction.y = direction.y * -1
+		direction.y *= -1
