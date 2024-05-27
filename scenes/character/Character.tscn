@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dtyrfiw6k130p"]
 
-[ext_resource type="Script" path="res://Character.gd" id="1_sq6mr"]
-[ext_resource type="Texture2D" uid="uid://b3gj0hnapdy6i" path="res://icon.svg" id="2_mnrjf"]
+[ext_resource type="Script" path="res://scenes/character/Character.gd" id="1_31bsh"]
+[ext_resource type="Texture2D" uid="uid://b3gj0hnapdy6i" path="res://icon.svg" id="2_ittsp"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q1cpw"]
 radius = 65.0
@@ -14,13 +14,13 @@ height = 240.0
 [node name="Character" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 2
-script = ExtResource("1_sq6mr")
+script = ExtResource("1_31bsh")
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_q1cpw")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_mnrjf")
+texture = ExtResource("2_ittsp")
 
 [node name="BatterBox" type="Area2D" parent="."]
 unique_name_in_owner = true

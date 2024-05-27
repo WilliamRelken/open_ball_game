@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://ckxjviho7cmib"]
 
-[ext_resource type="PackedScene" uid="uid://dtyrfiw6k130p" path="res://Character.tscn" id="1_13q04"]
-[ext_resource type="PackedScene" uid="uid://bs66l8nwgli7i" path="res://Ball.tscn" id="2_mklvh"]
+[ext_resource type="PackedScene" uid="uid://dtyrfiw6k130p" path="res://scenes/character/Character.tscn" id="1_rfjy0"]
+[ext_resource type="PackedScene" uid="uid://bs66l8nwgli7i" path="res://scenes/ball/Ball.tscn" id="2_7pgd4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c1pdq"]
 size = Vector2(1920, 40)
@@ -51,9 +51,9 @@ position = Vector2(960, 0)
 rotation = 3.14159
 shape = SubResource("RectangleShape2D_okghs")
 
-[node name="Character" parent="." instance=ExtResource("1_13q04")]
+[node name="Character" parent="." instance=ExtResource("1_rfjy0")]
 position = Vector2(519, 920)
 
-[node name="Ball" parent="." instance=ExtResource("2_mklvh")]
+[node name="Ball" parent="." instance=ExtResource("2_7pgd4")]
 unique_name_in_owner = true
 position = Vector2(953, 335)
