@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://c45bi42ksp4e7"]
 
-[ext_resource type="PackedScene" uid="uid://drcfrk8du7rwq" path="res://scenes/menus/SceneButton.tscn" id="1_5habd"]
-[ext_resource type="PackedScene" uid="uid://ckxjviho7cmib" path="res://scenes/map/Map.tscn" id="2_fmp8b"]
-[ext_resource type="Script" path="res://scenes/menus/ExitButton.gd" id="3_c86ok"]
+[ext_resource type="PackedScene" uid="uid://drcfrk8du7rwq" path="res://scenes/menus/SceneButton.tscn" id="1_bn4bx"]
+[ext_resource type="PackedScene" uid="uid://dkutum4s2lv2v" path="res://scenes/menus/character_select/CharacterSelect.tscn" id="2_v0teu"]
+[ext_resource type="Script" path="res://scenes/menus/main/ExitButton.gd" id="3_tvbeo"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -50,18 +50,18 @@ layout_mode = 2
 theme_override_constants/separation = 60
 alignment = 1
 
-[node name="PlayButton" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("1_5habd")]
+[node name="PlayButton" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("1_bn4bx")]
 custom_minimum_size = Vector2(200, 60)
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Play"
-scene = ExtResource("2_fmp8b")
+scene = ExtResource("2_v0teu")
 
 [node name="ExitButton" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(200, 60)
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "EXIT"
-script = ExtResource("3_c86ok")
+script = ExtResource("3_tvbeo")
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/ExitButton" to="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/ExitButton" method="_on_pressed"]

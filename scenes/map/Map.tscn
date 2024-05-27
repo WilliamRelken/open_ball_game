@@ -1,6 +1,5 @@
-[gd_scene load_steps=6 format=3 uid="uid://ckxjviho7cmib"]
+[gd_scene load_steps=5 format=3 uid="uid://ckxjviho7cmib"]
 
-[ext_resource type="PackedScene" uid="uid://dtyrfiw6k130p" path="res://scenes/character/Character.tscn" id="1_rfjy0"]
 [ext_resource type="PackedScene" uid="uid://bs66l8nwgli7i" path="res://scenes/ball/Ball.tscn" id="2_7pgd4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c1pdq"]
@@ -15,6 +14,8 @@ size = Vector2(1920, 40)
 [node name="Map" type="Node2D"]
 
 [node name="Arena" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
 
 [node name="Floor" type="StaticBody2D" parent="Arena"]
 collision_layer = 7
@@ -51,9 +52,20 @@ position = Vector2(960, 0)
 rotation = 3.14159
 shape = SubResource("RectangleShape2D_okghs")
 
-[node name="Character" parent="." instance=ExtResource("1_rfjy0")]
-position = Vector2(519, 920)
-
 [node name="Ball" parent="." instance=ExtResource("2_7pgd4")]
 unique_name_in_owner = true
-position = Vector2(953, 335)
+position = Vector2(960, 400)
+
+[node name="StartPositions" type="Node2D" parent="."]
+
+[node name="P1" type="Node2D" parent="StartPositions"]
+position = Vector2(550, 950)
+
+[node name="P2" type="Node2D" parent="StartPositions"]
+position = Vector2(1370, 950)
+
+[node name="P3" type="Node2D" parent="StartPositions"]
+position = Vector2(200, 950)
+
+[node name="P4" type="Node2D" parent="StartPositions"]
+position = Vector2(1720, 950)
