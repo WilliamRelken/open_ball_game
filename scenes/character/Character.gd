@@ -8,26 +8,24 @@ const EXTRA_JUMPS = 1
 const SWING_TIME = 0.2
 const SWING_MULT = 1.1
 
-# Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+var device_id: int
 var jump_count = EXTRA_JUMPS
 var swinging = false
 var swing_dir: Vector2 = Vector2(0, 0)
 
 func _physics_process(delta):
-	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
 
-	# Handle jump.
-	if (Input.is_action_just_pressed("jump")) and jump_count > 0:
+	if (MultiplayerInput.is_action_just_pressed(device_id, "jump")) and jump_count > 0:
 		velocity.y = JUMP_VELOCITY
 		jump_count = jump_count - 1
 	
 	if (jump_count != EXTRA_JUMPS and is_on_floor()): jump_count = EXTRA_JUMPS
 	
-	if Input.is_action_just_pressed("swing"):
-		var move_dir: Vector2 = Input.get_vector("move_left", "move_right", "look_up", "duck")
+	if MultiplayerInput.is_action_just_pressed(device_id, "swing"):
+		var move_dir: Vector2 = MultiplayerInput.get_vector(device_id, "move_left", "move_right", "look_up", "duck")
 		swing_dir = move_dir
 		var timer: SceneTreeTimer = get_tree().create_timer(SWING_TIME)
 		swinging = true
@@ -36,7 +34,7 @@ func _physics_process(delta):
 	if (swinging):
 		trigger_hit()
 
-	var direction = Input.get_axis("move_left", "move_right")
+	var direction = MultiplayerInput.get_axis(device_id, "move_left", "move_right")
 	if direction:
 		velocity.x = direction * SPEED
 	else:

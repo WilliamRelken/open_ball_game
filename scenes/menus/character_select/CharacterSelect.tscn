@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dkutum4s2lv2v"]
+[gd_scene load_steps=4 format=3 uid="uid://dkutum4s2lv2v"]
 
 [ext_resource type="Script" path="res://scenes/menus/character_select/CharacterSelect.gd" id="1_eysmk"]
 [ext_resource type="PackedScene" uid="uid://drcfrk8du7rwq" path="res://scenes/menus/SceneButton.tscn" id="2_10wuw"]
+[ext_resource type="PackedScene" uid="uid://c45bi42ksp4e7" path="res://scenes/menus/main/Main.tscn" id="3_25u5c"]
 
 [node name="CharacterSelect" type="Control"]
 layout_mode = 3
@@ -42,8 +43,4 @@ alignment = 1
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "Back"
-
-[node name="PlayButton" parent="MarginContainer/VBoxContainer/Buttons" instance=ExtResource("2_10wuw")]
-layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "Start"
+scene = ExtResource("3_25u5c")

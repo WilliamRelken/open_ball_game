@@ -8,7 +8,5 @@ func _ready():
 		push_warning("SceneButton with no Node connected")
 
 func _on_pressed():
-	#var next_scene: Resource = load(scene)
-	#next_scene.instance()
 	get_tree().change_scene_to_file(scene.get_path())
 	

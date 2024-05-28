@@ -52,4 +52,10 @@ text = "PLAYER"
 horizontal_alignment = 1
 autowrap_mode = 3
 
+[node name="Ready" type="CheckButton" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Ready"
+
 [connection signal="set_device_id" from="." to="." method="_on_set_device_id"]
+[connection signal="toggled" from="MarginContainer/VBoxContainer/Ready" to="." method="_on_ready_toggled"]
