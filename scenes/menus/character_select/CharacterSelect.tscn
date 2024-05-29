@@ -1,8 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://dkutum4s2lv2v"]
+[gd_scene load_steps=2 format=3 uid="uid://dkutum4s2lv2v"]
 
-[ext_resource type="Script" path="res://scenes/menus/character_select/CharacterSelect.gd" id="1_eysmk"]
-[ext_resource type="PackedScene" uid="uid://drcfrk8du7rwq" path="res://scenes/menus/SceneButton.tscn" id="2_10wuw"]
-[ext_resource type="PackedScene" uid="uid://c45bi42ksp4e7" path="res://scenes/menus/main/Main.tscn" id="3_25u5c"]
+[ext_resource type="Script" path="res://scenes/menus/character_select/CharacterSelect.gd" id="1_6qhwa"]
 
 [node name="CharacterSelect" type="Control"]
 layout_mode = 3
@@ -11,7 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_eysmk")
+script = ExtResource("1_6qhwa")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -39,8 +37,10 @@ layout_mode = 2
 theme_override_constants/separation = 100
 alignment = 1
 
-[node name="BackButton" parent="MarginContainer/VBoxContainer/Buttons" instance=ExtResource("2_10wuw")]
+[node name="BackButton" type="Button" parent="MarginContainer/VBoxContainer/Buttons"]
+custom_minimum_size = Vector2(200, 60)
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "Back"
-scene = ExtResource("3_25u5c")
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Buttons/BackButton" to="." method="_on_back_button_pressed"]

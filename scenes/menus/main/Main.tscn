@@ -1,8 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://c45bi42ksp4e7"]
+[gd_scene load_steps=2 format=3 uid="uid://c45bi42ksp4e7"]
 
-[ext_resource type="PackedScene" uid="uid://drcfrk8du7rwq" path="res://scenes/menus/SceneButton.tscn" id="1_bn4bx"]
-[ext_resource type="PackedScene" uid="uid://dkutum4s2lv2v" path="res://scenes/menus/character_select/CharacterSelect.tscn" id="2_v0teu"]
-[ext_resource type="Script" path="res://scenes/menus/main/ExitButton.gd" id="3_tvbeo"]
+[ext_resource type="Script" path="res://scenes/menus/main/Main.gd" id="1_to706"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -11,6 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_to706")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -50,18 +49,18 @@ layout_mode = 2
 theme_override_constants/separation = 60
 alignment = 1
 
-[node name="PlayButton" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("1_bn4bx")]
+[node name="PlayButton" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(200, 60)
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 40
 text = "Play"
-scene = ExtResource("2_v0teu")
 
 [node name="ExitButton" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(200, 60)
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 40
 text = "EXIT"
-script = ExtResource("3_tvbeo")
 
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/ExitButton" to="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/ExitButton" method="_on_pressed"]
