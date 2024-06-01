@@ -10,23 +10,18 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var players = %PlayerList.get_children()
+	var ready = PlayerHandler.everyone_ready()
+	%ReadyBar.visible = ready
 	for id in Input.get_connected_joypads():
-		if (MultiplayerInput.is_action_just_pressed(id, "jump") and id not in player_devices and len(players) < MAX_PLAYERS):
+		if (MultiplayerInput.is_action_just_pressed(id, "jump") and not PlayerHandler.is_player(id) and len(players) < PlayerHandler.MAX_PLAYERS):
 			var new_player = load("res://scenes/menus/character_select/player_box/PlayerBox.tscn")
 			var scene = new_player.instantiate()
 			scene.set_device_id.emit(id)
 			%PlayerList.add_child(scene)
-	player_devices = get_players()
-
-func get_players():
-	var id_list: Array[int] = []
-	var players = %PlayerList.get_children()
-	for player in players:
-		id_list.push_back(player.device_id)
-	return id_list
-
-func is_not_taken(player):
-	return !player.device_selected
+			PlayerHandler.add_player(id)
+		if ready and MultiplayerInput.is_action_just_pressed(id, "jump"):
+			get_tree().change_scene_to_file("res://scenes/map/Map.tscn")
+	
 
 func _on_back_button_pressed():
 	get_tree().change_scene_to_file("res://scenes/menus/main/Main.tscn")

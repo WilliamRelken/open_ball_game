@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dkutum4s2lv2v"]
+[gd_scene load_steps=3 format=3 uid="uid://dkutum4s2lv2v"]
 
 [ext_resource type="Script" path="res://scenes/menus/character_select/CharacterSelect.gd" id="1_6qhwa"]
+[ext_resource type="PackedScene" uid="uid://cxutx0d44cgus" path="res://scenes/menus/character_select/ready_bar/ReadyBar.tscn" id="2_dxmib"]
 
 [node name="CharacterSelect" type="Control"]
 layout_mode = 3
@@ -42,5 +43,9 @@ custom_minimum_size = Vector2(200, 60)
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "Back"
+
+[node name="ReadyBar" parent="." instance=ExtResource("2_dxmib")]
+unique_name_in_owner = true
+layout_mode = 1
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Buttons/BackButton" to="." method="_on_back_button_pressed"]
