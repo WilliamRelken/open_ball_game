@@ -10,6 +10,7 @@ const SWING_MULT = 1.1
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var device_id: int
+var player: Player
 var jump_count = EXTRA_JUMPS
 var swinging = false
 var swing_dir: Vector2 = Vector2(0, 0)
@@ -18,18 +19,19 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
 
-	if (MultiplayerInput.is_action_just_pressed(device_id, "jump")) and jump_count > 0:
-		velocity.y = JUMP_VELOCITY
-		jump_count = jump_count - 1
-	
-	if (jump_count != EXTRA_JUMPS and is_on_floor()): jump_count = EXTRA_JUMPS
-	
-	if MultiplayerInput.is_action_just_pressed(device_id, "swing"):
-		var move_dir: Vector2 = MultiplayerInput.get_vector(device_id, "move_left", "move_right", "look_up", "duck")
-		swing_dir = move_dir
-		var timer: SceneTreeTimer = get_tree().create_timer(SWING_TIME)
-		swinging = true
-		timer.timeout.connect(stop_swinging)
+	if device_id >= 0:
+		if (MultiplayerInput.is_action_just_pressed(device_id, "jump")) and jump_count > 0:
+			velocity.y = JUMP_VELOCITY
+			jump_count = jump_count - 1
+		
+		if (jump_count != EXTRA_JUMPS and is_on_floor()): jump_count = EXTRA_JUMPS
+		
+		if MultiplayerInput.is_action_just_pressed(device_id, "swing"):
+			var move_dir: Vector2 = MultiplayerInput.get_vector(device_id, "move_left", "move_right", "look_up", "duck")
+			swing_dir = move_dir
+			var timer: SceneTreeTimer = get_tree().create_timer(SWING_TIME)
+			swinging = true
+			timer.timeout.connect(stop_swinging)
 
 	if (swinging):
 		trigger_hit()

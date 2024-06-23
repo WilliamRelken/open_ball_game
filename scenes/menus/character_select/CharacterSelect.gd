@@ -1,6 +1,7 @@
 extends Control
 
 const MAX_PLAYERS = 4
+const MAX_BOX_WIDTH = 400
 var player_devices: Array[int] = []
 
 # Called when the node enters the scene tree for the first time.
@@ -21,6 +22,12 @@ func _process(delta):
 			PlayerHandler.add_player(id)
 		if ready and MultiplayerInput.is_action_just_pressed(id, "jump"):
 			get_tree().change_scene_to_file("res://scenes/map/Map.tscn")
+			return
+	var box_count = %PlayerList.get_children().size()
+	var window = get_viewport().get_visible_rect().size
+	if (window.x < (box_count * MAX_BOX_WIDTH)):
+		for scene: Control in %PlayerList.get_children():
+			scene.custom_minimum_size.x = floori(window.x / box_count)
 	
 
 func _on_back_button_pressed():

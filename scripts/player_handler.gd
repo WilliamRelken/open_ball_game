@@ -5,6 +5,9 @@ var players: Array[Player] = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	# quick way to add multiple characters for testing
+	#for x in range(4):
+		#add_player((x+1) * -1)
 	pass # Replace with function body.
 
 

@@ -7,15 +7,20 @@ func _ready():
 	add_players_to_line(split_players.get("even"), %Spawns/SpawnLineEven)
 	add_players_to_line(split_players.get("odd"), %Spawns/SpawnLineOdd)
 
+# Adds players evenly spaced and opposite each other
 func add_players_to_line(players: Array[Player], line: Path2D):
 	for i in players.size():
 		var point = PathFollow2D.new()
-		point.progress_ratio = i / players.size()
+		var ratio = float(i) / players.size()
 		line.add_child(point)
+		point.set_loop(false)
+		point.set_progress_ratio(ratio)
+		point.progress_ratio = ratio
 		var scene = load("res://scenes/character/Character.tscn")
 		var player: Player = players[i]
 		var player_scene = scene.instantiate()
 		player_scene.device_id = player.device
+		player_scene.player = player
 		player_scene.position = point.global_position
 		add_child(player_scene)
 		

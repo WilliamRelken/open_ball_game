@@ -40,7 +40,6 @@ layout_mode = 2
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 texture = ExtResource("1_juluy")
-expand_mode = 4
 stretch_mode = 5
 
 [node name="PlayerName" type="Label" parent="MarginContainer/VBoxContainer"]
