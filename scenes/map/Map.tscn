@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://ckxjviho7cmib"]
+[gd_scene load_steps=9 format=3 uid="uid://ckxjviho7cmib"]
 
 [ext_resource type="Script" path="res://scenes/map/Map.gd" id="1_me656"]
 [ext_resource type="PackedScene" uid="uid://bs66l8nwgli7i" path="res://scenes/ball/Ball.tscn" id="2_7pgd4"]
+[ext_resource type="PackedScene" uid="uid://yv5fxt3e75yn" path="res://scenes/health_bars/HealthBars.tscn" id="3_488fi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c1pdq"]
 size = Vector2(1920, 40)
@@ -81,3 +82,8 @@ curve = SubResource("Curve2D_djtqc")
 [node name="SpawnLineOdd" type="Path2D" parent="Spawns"]
 position = Vector2(0, 560)
 curve = SubResource("Curve2D_xgxd2")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="HealthBars" parent="CanvasLayer" instance=ExtResource("3_488fi")]
