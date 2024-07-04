@@ -38,7 +38,7 @@ func _physics_process(delta):
 
 	var direction = MultiplayerInput.get_axis(device_id, "move_left", "move_right")
 	if direction:
-		velocity.x = direction * SPEED
+		velocity.x = direction * SPEED * 1.5
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	move_and_slide()
